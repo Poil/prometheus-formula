@@ -1,0 +1,6 @@
+{% import_yaml "prometheus/defaults.yaml" as default_settings %}
+{% set prometheus = salt['pillar.get'](
+    'prometheus',
+    default=default_settings.prometheus,
+    merge=True)
+%}
