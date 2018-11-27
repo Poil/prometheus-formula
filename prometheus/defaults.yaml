@@ -1,3 +1,23 @@
 prometheus:
-  version: 2.5.0
-  source: ''
+  install_dir: /opt
+  server:
+    enable: False
+    version: 2.5.0
+    source:
+    config:
+      global:
+        scrape_interval: 15s
+        evaluation_interval: 15s
+      alerting:
+        alertmanagers:
+          - static_configs:
+            - targets:
+      rule_files:
+      scrape_configs:
+        - job_name: 'prometheus'
+          static_configs:
+            - targets: ['localhost:9090']
+  node_exporter:
+    enable: False
+    version: 0.17.0-rc.0
+    source:
