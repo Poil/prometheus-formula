@@ -12,13 +12,6 @@ prometheus-{{ prometheus.server.version }}.linux-amd64:
     - skip_verify: True
     - if_missing: {{ prometheus.install_dir }}/prometheus-{{ prometheus.server.version }}.linux-amd64
 
-prometheus:
-  user.present:
-    - fullname: Prometheus
-    - shell: /sbin/nologin
-    - createhome: False
-    - system: True
-
 {{ prometheus.install_dir }}/prometheus:
   file.symlink:
     - target: {{ prometheus.install_dir }}/prometheus-{{ prometheus.server.version }}.linux-amd64
