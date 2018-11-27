@@ -9,6 +9,7 @@ prometheus-{{ prometheus.server.version }}.linux-amd64:
     {%- endif %}
     - user: root
     - group: root
+    - skip_verify: True
     - if_missing: {{ prometheus.install_dir }}/prometheus-{{ prometheus.server.version }}.linux-amd64
 
 prometheus:
