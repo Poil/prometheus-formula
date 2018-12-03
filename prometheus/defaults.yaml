@@ -21,3 +21,7 @@ prometheus:
     enable: False
     version: 0.17.0-rc.0
     source:
+  snmp_exporter:
+    enable: False
+    version: 0.13.0
+    source:

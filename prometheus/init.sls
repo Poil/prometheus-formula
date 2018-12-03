@@ -9,3 +9,6 @@ include:
   {%- if prometheus.node_exporter.enable %}
   - prometheus.node_exporter
   {%- endif %}
+  {%- if prometheus.snmp_exporter.enable %}
+  - prometheus.snmp_exporter
+  {%- endif %}
