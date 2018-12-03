@@ -39,7 +39,7 @@ snmp_exporter.service:
           Description: Node Exporter
         Service:
           User: prometheus
-          ExecStart: {{ prometheus.install_dir }}/snmp_exporter/snmp_exporter
+          ExecStart: {{ prometheus.install_dir }}/snmp_exporter/snmp_exporter --config.file={{ prometheus.install_dir }}/snmp_exporter/snmp.yml
         Install:
           WantedBy: multi-user.target
 
