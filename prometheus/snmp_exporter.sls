@@ -36,7 +36,7 @@ snmp_exporter.service:
     - strict: True
     - sections:
         Unit:
-          Description: Node Exporter
+          Description: SNMP Exporter
         Service:
           User: prometheus
           ExecStart: {{ prometheus.install_dir }}/snmp_exporter/snmp_exporter --config.file={{ prometheus.install_dir }}/snmp_exporter/snmp.yml
