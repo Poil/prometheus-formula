@@ -40,6 +40,11 @@ alertmanager.service:
         Service:
           User: prometheus
           ExecStart: {{ prometheus.install_dir }}/alertmanager/alertmanager --config.file={{ prometheus.install_dir }}/alertmanager/alertmanager.yml
+          {%- if prometheus.alertmanager.cluster -%}
+            {%- for key, value in prometheus.alertmanager.cluster.items() -%}
+              {{ " " }}--cluster.{{ key }}={{ value }}
+            {%- endfor -%}
+          {% endif %}
         Install:
           WantedBy: multi-user.target
 
