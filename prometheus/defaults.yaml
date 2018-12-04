@@ -1,5 +1,6 @@
 prometheus:
   install_dir: /opt
+  rules:
   server:
     enable: False
     version: 2.5.0

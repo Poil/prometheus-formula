@@ -55,3 +55,22 @@ prometheus.service:
     - user: root
     - group: root
     - mode: '0644'
+
+{{ prometheus.install_dir }}/prometheus/rules:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: '0755'
+
+{% if prometheus.server.rules %}
+  {% for file, config in prometheus.server.rules.items() %}
+{{ prometheus.install_dir }}/prometheus/rules/{{ file }}.yml:
+  file.serialize:
+    - dataset:
+        {{ config | yaml() | indent(8) }}
+    - formatter: yaml
+    - user: root
+    - group: root
+    - mode: '0644'
+  {% endfor %}
+{% endif %}
