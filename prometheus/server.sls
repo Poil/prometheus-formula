@@ -46,6 +46,11 @@ prometheus.service:
     - watch:
       - {{ prometheus.install_dir }}/prometheus/prometheus.yml
       - /etc/systemd/system/prometheus.service
+      {% if prometheus.server.rules %}
+        {% for file, config in prometheus.server.rules.items() %}
+      - {{ prometheus.install_dir }}/prometheus/rules/{{ file }}.yml
+        {% endfor %}
+      {% endif %}
 
 {{ prometheus.install_dir }}/prometheus/prometheus.yml:
   file.serialize:
