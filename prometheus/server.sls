@@ -77,6 +77,7 @@ prometheus.service:
     - user: root
     - group: root
     - mode: '0644'
-    - require: {{ prometheus.install_dir }}/prometheus/rules
+    - require:
+      - {{ prometheus.install_dir }}/prometheus/rules
   {% endfor %}
 {% endif %}
