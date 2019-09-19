@@ -5,6 +5,8 @@ prometheus:
     enable: False
     version: 2.5.0
     source:
+    option:
+      retention_time: 15d
     config:
       global:
         scrape_interval: 15s

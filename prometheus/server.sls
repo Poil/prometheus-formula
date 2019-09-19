@@ -36,7 +36,7 @@ prometheus_service_file:
         Service:
           User: root
           Restart: on-failure
-          ExecStart: {{ prometheus.install_dir }}/prometheus/prometheus --config.file={{ prometheus.install_dir }}/prometheus/prometheus.yml
+          ExecStart: {{ prometheus.install_dir }}/prometheus/prometheus --config.file={{ prometheus.install_dir }}/prometheus/prometheus.yml --storage.tsdb.retention.time={{ prometheus.server.option.retention_time }}
         Install:
           WantedBy: multi-user.target
 
