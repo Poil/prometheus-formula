@@ -4,6 +4,7 @@ prometheus:
   server:
     enable: False
     version: 2.5.0
+    external_url:
     source:
     option:
       retention_time: 15d

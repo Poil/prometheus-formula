@@ -36,7 +36,7 @@ prometheus_service_file:
         Service:
           User: root
           Restart: on-failure
-          ExecStart: {{ prometheus.install_dir }}/prometheus/prometheus --config.file={{ prometheus.install_dir }}/prometheus/prometheus.yml --storage.tsdb.retention.time={{ prometheus.server.option.retention_time }}
+          ExecStart: {{ prometheus.install_dir }}/prometheus/prometheus --config.file={{ prometheus.install_dir }}/prometheus/prometheus.yml --storage.tsdb.retention.time={{ prometheus.server.option.retention_time }}{% if prometheus.server.external_url %} --web.external-url={{ prometheus.server.external_url }}{% endif %}
         Install:
           WantedBy: multi-user.target
 
